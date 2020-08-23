@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="step01_jpaBasic">
+		<class>step01.entity.Member</class>
+	
+		<properties>
+			<!-- db접속 정보 설정 tag와 속성 -->
+			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe" />
+			<property name="javax.persistence.jdbc.user" value="SCOTT" />
+			<property name="javax.persistence.jdbc.password" value="TIGER" />
+			
+			
+			<!-- 표준 java 코드들을 db에 종속적인 표현법으로 자동 변환해주는 변환기 -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect" />
+			
+			
+			<!-- 옵션 : table을 java 어노테이션을 통해서 자동 생성시키는 옵션들-->
+			
+			<!-- console창에 sql 문장 출력 -->
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<!-- <property name="hibernate.use_sql_comments" value="true" /> -->
+			<property name="hibernate.id.new_generator_mappings" value="true" />
+
+			<!-- 개발 단계와 테스트 단계에서만 사용하여 drop&create을 사용 -->
+ 			<property name="hibernate.hbm2ddl.auto" value="create" />  
+ 			
+ 			<!-- 실제 배포되었을 떄 기존에 존재하는 table 재사용할 것이므로 value = none으로 바꿔준 상태로 배포 -->
+		 	<!-- <property name="hibernate.hbm2ddl.auto" value="none" />  -->
+			
+		</properties>
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,13 @@
+1. refactoring 미션
+	- 최상의 구조로 개선
+2. 이미 제공된 파일들의 한글 복원 연습
+
+3. 모든 CRUD 로직
+
+4. 미션 두 단계
+	1단계 : step03_empMission 리팩토링
+	2단계 : dept와 emp table 관계처럼 JPA로 개발
+		step04_oracleMission
+		crud 로직은 아니어도 되고 insert 정도만 수행
+		
+		entity명 : 

@@ -1,0 +1,35 @@
+JPQL
+
+1. JPA에서 sql문장으로 검색할 수 있는 방법
+	- select 문장으로 Entity 검색
+
+2. 주의사항
+	- select 시에는 대소문자 예민
+	- 이유는 db와 소통하는 것이 아닌 Entity와 소통하기 때문에
+	- * from 절에 entity명에 별칭 필수
+		select 검색 변수 from entity 별칭
+
+3. 실습 단계
+	- 이미 존재하는 table 기반으로 검색
+	drop table employee;
+	create table employee as select empno, ename, sal, deptno from emp;
+	select * from employee;
+	
+
+	1. 단순 검색
+		대문자로 변경하여 출력
+		max() 함수로 최대 급여자 검색 
+		between ~ and
+		like
+		order by
+	2. 정적 쿼리 학습
+		@NamedQuery(query = "query 문장", name = "이름 ")
+		- 애플리케이션 로딩 시점에 JPQL 문법 체크하고 미리 파싱해 둠 (db에 캐싱해 놓는다)
+		- 실제 호출 전에 실행을 위한 모든 준비 완료
+		- @Entity와 같이 클래스 선언구
+		- 실제 호출 전 오류 검증 확인 가능, 성능 면에서도 빠른 장점 보유
+
+4. 참고
+	PLSQL 실행속도가 빠른 이유
+	PreparedStatement API가 Statement 비교시 장점
+	실행 속도가 빠름 - DB에 이미 변환되어 호출시에 실행

@@ -1,0 +1,44 @@
+학습내용
+
+1. 실행 단계
+	table 존재 여부를 rdbs확인 -> 없었다
+	Test실행
+	1. table 여부 확인 후 Member/Custemer 자동 생성
+	2. console창에 drop & create 기록
+	3. 2번째 실행시에는 콘솔창에 에러 없이 실행 - 존재하는 table 삭제 -> table 생성
+	
+2. 결론
+	- sql 문자 없이도 table 자동 생성
+	
+====
+JPA 필수 이론
+1. 기능 : java 순수 code로 table 및 관계 형성 및 데이터 저장, 수정, 삭제, 검색 가능
+	- sql문장이 없어도 db와 crud 가능
+2. 장점 
+	- 개발 코드가 간소화된다, 비용 절감
+	- 표준화
+	- table 설계가 변경될 경우 sql문장 새로 구성할 필요 없이 java 소스 부분만 수정하여 활용
+3. 단점
+	- 복잡한 sql문장을 구현하려는 경우 쉽지 않다
+	- 복잡한 sql문장은 JDBC 혼용하여 사용
+	- 배우기 힘듬
+	
+--------
+1. @Entity
+	- table로 맵핑되는 자바 클래스
+	
+---------
+@Slf4j
+
+1.entity 설계시 고려사항
+	- table 설계
+	- table 간의 관계
+	- db별 특징
+		: oracle 1씩 자동 증가하는 기능 보장 - SQUENCE
+		: mysql 1씩 자동 증가하는 기능 보장 - autoincrement
+2. 시퀀스 반영한 pk
+	- Member라는 클래스에 pk값을 사용자가 직접 설정하는 옵션은 
+		setId method 제공 불필요
+		id값 초기화하는 로직의 생성 parameter 불필요
+		결론 : DTO와 구분해서 개발 필수
+		

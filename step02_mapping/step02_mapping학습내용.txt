@@ -1,0 +1,37 @@
+
+
+1. JPA - SQL문장 없이 entity 클래스만으로 table 생성 + 제약 조건 적용
+	: schema 자체가 자동 생성
+	: id값을 sequence 적용 시 oracle db 자체적으로 1씩 증가치 사용
+		- 자바 코드로 명시적인 id값을 대입 불가여야 함
+		- entity 클래스 설계는
+			setId() 구현 권장하지 않고 생성자 역시 Id값을 제외해야 한다
+		- 차후에 id값도 필요로 하는 경우를 대비해서 table과 연계되는 DTO설계 따로 권장
+
+2. 실습 구조
+	Team.java , Member.java
+	1. Member는 Team에 포함
+	2. Team에는 여러명의 Member가 포함
+
+3. 설계
+	1. 순수 RDBMS관점에서 논리적인 설계
+	2. Entity 클래스 설계
+
+4. 실전 실습
+ 	1단계 : 1:1 관계
+ 		- Team의 id값을 Member가 참조하는 구조
+ 		- 시퀀스 공유 문제 발생
+ 	2단계 :
+ 		* Entity
+ 		- Team에는 Member에 대한 정보 미보유
+ 		- Member에는 소속된 Team 정보 보유
+ 		1. 공유되는 시퀀스 문제 해결
+ 		2. Member에 Team타입의 변수 자체를 선언
+ 	3단계 : 
+ 		- entity 클래스
+ 		1. Team에도 소속된 Member들 보유
+ 			- 멤버 변수 타입 List<Member>
+ 		2. Member에는 소속된 한 Team에 대한 정보 보유
+ 		3. 관계
+ 			하나의 Team에는 다수의 Member 보유
+ 			OneToMany
